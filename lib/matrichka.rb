@@ -12,9 +12,12 @@ class Matr
   attr_reader :rows
   protected :rows
 
-  def initialize(m:)
+  def initialize(m:, rows, column_count = rows[0].size)
     @m = m
+    @rows = rows
+    @column_count = column_count
   end
+
 
   def [](index)
     m[index]
@@ -25,8 +28,21 @@ class Matr
   end
 
   def determinant
-    # для матриц 2х2
-    m[0][0] * m[1][1] - m[0][1] * m[1][0]
+    m = @rows
+    case row_count
+
+    when 0
+      +1
+    when 1
+      + m[0][0]
+    when 2
+      + m[0][0] * m[1][1] - m[0][1] * m[1][0]
+    when 3
+      m0, m1, m2 = m
+      + m0[0] * m1[1] * m2[2] - m0[0] * m1[2] * m2[1] \
+      - m0[1] * m1[0] * m2[2] + m0[1] * m1[2] * m2[0] \
+      + m0[2] * m1[0] * m2[1] - m0[2] * m1[1] * m2[0]
+
   end
 
   # Returns the number of rows
