@@ -1,8 +1,6 @@
 # Matrichka
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/matrichka`. To experiment with that code, run `bin/console` for an interactive prompt.
+Простая реализация класса Матрицы с базовыми операциями
 
 ## Installation
 
@@ -18,26 +16,32 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
+###Создание матрицы
 ```ruby
-c = Matr.new(m: [[1,2],[4,5]])
-
-# умонжение матриц
-
-M = Matr.new([[1, 2, 3], [3, 2, 1]])
-N = Matr.new([0, 1, 1])
-p M*N # => [5, 3]
-
-# сложение матриц
-
+M = Matr.new([[1,2],[4,5]])
+```
+###Обращение к матрице по индексу
+```ruby
+M = Matr.new([[-1,10],[4,77],[-5,-9]])
+M[1][0] # => 4
+```
+###Сложение матриц
+```ruby
 M = Matr.new([[1, 3], [-2, 3]])
 N = Matr.new([[0, 3], [0, 7]])
-p M + N # => [[1, 6], [-2, 10]]
-
-#умножение матрицы на число
-M = Matr.new([[1, 3], [-2, 3]])
+M + N # => [[1, 6], [-2, 10]]
+```
+###Умножение матриц
+```ruby
+M = Matr.new([[1, 2, 3], [3, 2, 1]])
+N = Matr.new([0, 1, 1])
+M * N # => [5, 3]
+```
+###Умножение матрицы на число
+```ruby
+M = Matr.new([[1, 3], [-2, 5]])
 a = 5
-p M*a
-
+M * a # => [[5, 15], [-10, 25]]
 ```
 
 ## Development
@@ -48,8 +52,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/matrichka. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/matrichka/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/GriSikEnch/matrichka. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/GriSikEnch/matrichka/blob/master/CODE_OF_CONDUCT.md).
 
 ## Code of Conduct
 
-Everyone interacting in the Matrichka project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/matrichka/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Matrichka project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/GriSikEnch/matrichka/blob/master/CODE_OF_CONDUCT.md).
