@@ -1,6 +1,6 @@
 require_relative "matrichka/version"
 
-class M
+class Matr
   attr_reader :row_count, :col_count
 
   def initialize(matr)
@@ -23,7 +23,7 @@ class M
         self[i][j] + other[i][j]
       }
     }
-    M.new(new_matr)
+    Matr.new(new_matr)
   end
 
   def -(other)
@@ -32,7 +32,7 @@ class M
         self[i][j] - other[i][j]
       }
     }
-    M.new(new_matr)
+    Matr.new(new_matr)
   end
 
   def *(other)
@@ -43,7 +43,7 @@ class M
             self[i][j] * other
           }
         }
-      when M
+      when Matr
         new_matr = Array.new(self.row_count) {|i|
           Array.new(other.col_count) {|j|
             # self[i][j] + other[i][j]
@@ -51,7 +51,7 @@ class M
           }
         }
       end
-    M.new(new_matr)
+    Matr.new(new_matr)
   end
 
   def determinant
