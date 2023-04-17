@@ -1,36 +1,62 @@
-# frozen_string_literal: true
-
 require_relative "matrichka/version"
 
-module Matrichka
-  class Error < StandardError; end
-  # Your code goes here...
-end
+class M
+  attr_reader :row_count, :col_count
 
-class Matr
-  attr_accessor :m
-  attr_reader :rows
-  protected :rows
-
-  def initialize(m:, rows, column_count = rows[0].size)
-    @m = m
-    @rows = rows
-    @column_count = column_count
+  def initialize(matr)
+    @matr = matr
+    @row_count = matr.size
+    @col_count = matr[0].size
   end
 
-
   def [](index)
-    m[index]
+    @matr[index]
   end
 
   def []=(index, value)
-    @m[index] = value
+    @matr[index] = value
+  end
+
+  def +(other)
+    new_matr = Array.new(row_count) {|i|
+      Array.new(col_count) {|j|
+        self[i][j] + other[i][j]
+      }
+    }
+    M.new(new_matr)
+  end
+
+  def -(other)
+    new_matr = Array.new(row_count) {|i|
+      Array.new(col_count) {|j|
+        self[i][j] - other[i][j]
+      }
+    }
+    M.new(new_matr)
+  end
+
+  def *(other)
+    case other
+      when Numeric
+        new_matr = Array.new(row_count) {|i|
+          Array.new(col_count) {|j|
+            self[i][j] * other
+          }
+        }
+      when M
+        new_matr = Array.new(self.row_count) {|i|
+          Array.new(other.col_count) {|j|
+            # self[i][j] + other[i][j]
+            Array.new()
+          }
+        }
+      end
+    M.new(new_matr)
   end
 
   def determinant
-    m = @rows
+    m = @matr
     case row_count
-
     when 0
       +1
     when 1
@@ -42,32 +68,6 @@ class Matr
       + m0[0] * m1[1] * m2[2] - m0[0] * m1[2] * m2[1] \
       - m0[1] * m1[0] * m2[2] + m0[1] * m1[2] * m2[0] \
       + m0[2] * m1[0] * m2[1] - m0[2] * m1[1] * m2[0]
-
+    end
   end
-
-  # Returns the number of rows
-  def row_count
-    @rows.size
-  end
-
-
-# Matrix multiplication.
-  def *(m) # m is matrix or vector or number
-      m_rows = m.rows
-      new_rows = rows.map do |row_i|
-        Array.new(m.column_count) do |j|
-          v[i][j] = 0
-          column_count.times do |k|
-            v[i][j] += row_i[k] * m_rows[k][j]
-          end
-          v[i][j]
-  end
-
-
-# x = Matr.new(m: [[1,2,3],[4,5,6],[7,8,9]])
-# p x
-# p x[0]
-# p x[1][0]
-
-c = Matr.new(m: [[1,2],[4,5]])
-p c.determinant
+end
