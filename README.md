@@ -4,6 +4,16 @@
 
 ## Installation
 
+Склонируйте репозиторий
+```bash
+$ git clone https://github.com/GriSikEnch/matrichka.git
+```
+
+В корневой директории проекта зарустите bundler и rake
+```bash
+$ bundle install
+$ rake install
+```
 TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
 Install the gem and add to the application's Gemfile by executing:
