@@ -1,6 +1,17 @@
 require_relative "matrichka/version"
 
+module MatrichkaExceptions
+  class RowsColsMismatchErr < StandardError
+    def initialize(msg="Кол-во столбцов 1-ой матрицы не совпадают с кол-вом строк 2-ой!!!")
+      super
+    end
+  end
+end
+
+
 class Matr
+  include MatrichkaExceptions
+
   attr_reader :row_count, :col_count
 
   def initialize(matr)
@@ -44,10 +55,14 @@ class Matr
           }
         }
       when Matr
-        new_matr = Array.new(self.row_count) {|i|
+        raise RowsColsMismatchErr if self.col_count != other.row_count
+
+        new_matr = Array.new(self.row_count) {Array.new(other.col_count, 0)}
+        Array.new(self.row_count) {|i|
           Array.new(other.col_count) {|j|
-            # self[i][j] + other[i][j]
-            Array.new()
+            Array.new(other.row_count) {|k|
+              new_matr[i][j] += self[i][k] * other[k][j]
+            }
           }
         }
       end
