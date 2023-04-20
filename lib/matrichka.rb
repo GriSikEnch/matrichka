@@ -33,6 +33,15 @@ class Matr
     @matr[index] = value
   end
 
+  def ==(other)
+    Array.new(row_count) do |i|
+      Array.new(col_count) do |j|
+        return false unless self[i][j] == other[i][j]
+      end
+    end
+    return true
+  end
+
   def +(other)
     new_matr = Array.new(row_count) do |i|
       Array.new(col_count) do |j|
