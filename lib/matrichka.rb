@@ -130,4 +130,19 @@ class Matr
     end
   end
 
+  #Максимальный элемент
+  def max_element
+    m = @matr
+    max_el = m[0][0]
+   
+    m.each_with_index do |row,k|
+      row.each_with_index do |el,i|
+        if (el >= max_el)
+          max_el = el
+        end
+      end
+    end
+    return max_el
+  end
+
 end
