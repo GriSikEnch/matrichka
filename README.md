@@ -55,6 +55,12 @@ N = Matr.new([[0, 3], [0, 7]])
 N.sub(2, 2, 1) # => [[0, 3], [0, -4]]
 ```
 
+## Tests
+Запустить тесты можно, находлясь в корневом каталоге, командой:
+```bash
+ruby tests/matrichka_test.rb 
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/GriSikEnch/matrichka. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/GriSikEnch/matrichka/blob/master/CODE_OF_CONDUCT.md).
