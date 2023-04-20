@@ -96,7 +96,6 @@ class Matr
 
   def determinant
     raise  MatrichkaIsNotSquare unless square?
-  
     m = @matr
     case row_count
     when 1
@@ -120,4 +119,15 @@ class Matr
       m[i][k] -= m[j][k] * h
     end
   end
+
+  # Перестановка строк
+  def swap(n_row,col)
+    m = @matr
+    m.each_with_index do |row,i|
+      t = m[n_row][i]
+      m[n_row][i] = m[col][i]
+      m[col][i] = t
+    end
+  end
+
 end
