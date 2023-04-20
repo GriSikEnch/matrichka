@@ -1,8 +1,15 @@
 require_relative "matrichka/version"
 
 module MatrichkaExceptions
+
   class RowsColsMismatchErr < StandardError
     def initialize(msg = "Кол-во столбцов 1-ой матрицы не совпадают с кол-вом строк 2-ой!!!")
+      super
+    end
+  end
+
+  class MatrichkaIsNotSquare < StandardError
+    def initialize(msg="Невозожно посчитать детерминант, Матрица должна быть квадратной!!!")
       super
     end
   end
@@ -84,10 +91,10 @@ class Matr
   end
 
   def determinant
+    raise  MatrichkaIsNotSquare if row_count != col_count
+  
     m = @matr
     case row_count
-    when 0
-      +1
     when 1
       + m[0][0]
     when 2
