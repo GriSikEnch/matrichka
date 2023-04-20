@@ -1,10 +1,18 @@
-# Matrichka
+# Matrichka ![forthebadge ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white)
 
-Простая реализация класса Матрицы с базовыми операциями
+![GitHub lastcommit](https://img.shields.io/github/last-commit/GriSikEnch/matrichka) 
+![GitHub size](https://img.shields.io/github/languages/code-size/GriSikEnch/matrichka)
+![GitHub languages](https://img.shields.io/github/languages/top/GriSikEnch/matrichka)
 
-## Installation
+#
+## Простая реализация класса Матрицы с базовыми операциями  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien%20Monster.png" alt="Alien Monster" width="25" height="25" />
 
-Склонируйте репозиторий
+
+#
+
+## Installation <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Down%20Arrow.png" alt="Down Arrow" width="25" height="25" />
+
+Склонируйте репозиторий 
 ```bash
 $ git clone https://github.com/GriSikEnch/matrichka.git
 ```
@@ -15,7 +23,8 @@ $ bundle install
 $ rake install
 ```
 
-## Usage
+#
+## Usage <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Lizard.png" alt="Lizard" width="25" height="25" />
 
 ### Создание матрицы
 ```ruby
@@ -54,17 +63,19 @@ M * N # => [[0, 24], [0, 15]]
 N = Matr.new([[0, 3], [0, 7]])
 N.sub(2, 2, 1) # => [[0, 3], [0, -4]]
 ```
-
-## Tests
-Запустить тесты можно, находлясь в корневом каталоге, командой:
+#
+## Tests <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Alien.png" alt="Alien" width="25" height="25" />
+Запустить тесты можно, находясь в корневом каталоге, командой:
 ```bash
 ruby tests/matrichka_test.rb 
 ```
-
-## Contributing
+#
+## Contributing <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Folded%20Hands%20Light%20Skin%20Tone.png" alt="Folded Hands Light Skin Tone" width="25" height="25" />
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/GriSikEnch/matrichka. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/GriSikEnch/matrichka/blob/master/CODE_OF_CONDUCT.md).
 
-## Code of Conduct
+#
+## Code of Conduct <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Crossed%20Fingers%20Light%20Skin%20Tone.png" alt="Crossed Fingers Light Skin Tone" width="25" height="25" />
 
 Everyone interacting in the Matrichka project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/GriSikEnch/matrichka/blob/master/CODE_OF_CONDUCT.md).
+#
