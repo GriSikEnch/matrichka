@@ -29,7 +29,7 @@ class Matr
   def initialize(matr)
     @matr = matr
     @row_count = matr.size
-    @col_count = matr[0].size
+    @col_count = matr[0].is_a?(Numeric) ? 1 : matr[0].size
   end
 
   def [](index)
@@ -38,6 +38,10 @@ class Matr
 
   def []=(index, value)
     @matr[index] = value
+  end
+
+  def square?
+    col_count == row_count
   end
 
   def ==(other)
@@ -91,12 +95,12 @@ class Matr
   end
 
   def determinant
-    raise  MatrichkaIsNotSquare if row_count != col_count
+    raise  MatrichkaIsNotSquare unless square?
   
     m = @matr
     case row_count
     when 1
-      + m[0][0]
+      + m[0]
     when 2
       + m[0][0] * m[1][1] - m[0][1] * m[1][0]
     when 3
