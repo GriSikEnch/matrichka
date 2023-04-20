@@ -145,4 +145,19 @@ class Matr
     return max_el
   end
 
+  #Минимальный элемент
+  def min_element
+    m = @matr
+    min_el = m[0][0]
+   
+    m.each_with_index do |row,k|
+      row.each_with_index do |el,i|
+        if (el <= min_el)
+          min_el = el
+        end
+      end
+    end
+    return min_el
+  end
+
 end
