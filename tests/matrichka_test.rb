@@ -76,4 +76,31 @@ class MatrichkaTest < Test::Unit::TestCase
     assert_raise(MatrichkaExceptions::MatrichkaIsNotSquare) {m3.determinant}
     assert_raise(MatrichkaExceptions::CantEvalDetErr) {m4.determinant}
   end
+
+  def test_swap_of_rows
+    m1 = Matr.new([[10, 15],[6,4]] )
+    m2 = Matr.new([[1, 16, 26], [-26, 56, 66], [76, 86, 96]])
+    m3 = Matr.new([[1, 3, -9], [-2, 26, 7], [4, -6, 8]])
+    assert_equal Matr.new([[6,4],[10, 15]] ), m1.swap(0,1)
+    assert_equal Matr.new([[1, 16, 26], [76, 86, 96], [-26, 56, 66]] ), m2.swap(1,2)
+    assert_equal Matr.new([[4, -6, 8], [-2, 26, 7],[1, 3, -9]]), m3.swap(0,2)
+  end
+
+  def test_search_of_maximum_element
+    m1 = Matr.new([[1, 5],[6,4]] )
+    m2 = Matr.new([[1, 16], [-2, 5]])
+    m3 = Matr.new([[1, 3, -9], [-2, 26, 7], [4, -6, 8]])
+    assert_equal 6, m1.max_element
+    assert_equal 16, m2.max_element
+    assert_equal 26, m3.max_element
+  end
+
+  def test_search_of_minimum_element
+    m1 = Matr.new([[1, 5],[6,4]] )
+    m2 = Matr.new([[1, 16], [-2, 5]])
+    m3 = Matr.new([[1, 3, -9], [-2, 26, 7], [4, -6, 8]])
+    assert_equal 1, m1.min_element
+    assert_equal -2, m2.min_element
+    assert_equal -9, m3.min_element
+  end
 end
