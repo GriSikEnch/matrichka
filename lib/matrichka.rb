@@ -2,17 +2,17 @@ require_relative "matrichka/version"
 
 module MatrichkaExceptions
   class RowsColsMismatchErr < StandardError
-    def initialize(msg="Кол-во столбцов 1-ой матрицы не совпадают с кол-вом строк 2-ой!!!")
+    def initialize(msg = "Кол-во столбцов 1-ой матрицы не совпадают с кол-вом строк 2-ой!!!")
       super
     end
   end
+
   class CantEvalDetErr < StandardError
-    def initialize(msg="Невозожно посчитать детерминант матрицы порядка выше, чем 3!!!")
+    def initialize(msg = "Невозожно посчитать детерминант матрицы порядка выше, чем 3!!!")
       super
     end
   end
 end
-
 
 class Matr
   include MatrichkaExceptions
@@ -34,43 +34,43 @@ class Matr
   end
 
   def +(other)
-    new_matr = Array.new(row_count) {|i|
-      Array.new(col_count) {|j|
+    new_matr = Array.new(row_count) do |i|
+      Array.new(col_count) do |j|
         self[i][j] + other[i][j]
-      }
-    }
+      end
+    end
     Matr.new(new_matr)
   end
 
   def -(other)
-    new_matr = Array.new(row_count) {|i|
-      Array.new(col_count) {|j|
+    new_matr = Array.new(row_count) do |i|
+      Array.new(col_count) do |j|
         self[i][j] - other[i][j]
-      }
-    }
+      end
+    end
     Matr.new(new_matr)
   end
 
   def *(other)
     case other
-      when Numeric
-        new_matr = Array.new(row_count) {|i|
-          Array.new(col_count) {|j|
-            self[i][j] * other
-          }
-        }
-      when Matr
-        raise RowsColsMismatchErr if self.col_count != other.row_count
-
-        new_matr = Array.new(self.row_count) {Array.new(other.col_count, 0)}
-        Array.new(self.row_count) {|i|
-          Array.new(other.col_count) {|j|
-            Array.new(other.row_count) {|k|
-              new_matr[i][j] += self[i][k] * other[k][j]
-            }
-          }
-        }
+    when Numeric
+      new_matr = Array.new(row_count) do |i|
+        Array.new(col_count) do |j|
+          self[i][j] * other
+        end
       end
+    when Matr
+      raise RowsColsMismatchErr if col_count != other.row_count
+
+      new_matr = Array.new(row_count) { Array.new(other.col_count, 0) }
+      Array.new(row_count) do |i|
+        Array.new(other.col_count) do |j|
+          Array.new(other.row_count) do |k|
+            new_matr[i][j] += self[i][k] * other[k][j]
+          end
+        end
+      end
+    end
     Matr.new(new_matr)
   end
 
@@ -93,22 +93,11 @@ class Matr
     end
   end
 
-  
-  # Нахождение максимально элемента в строке
-  
-# Вычетание строк
-  def sub(i,j,h)
-    m =@matr
-    m.each_with_index do |element,k|
-      m[i][k] -= m[j][k]*h
-
+  # Вычитание строк
+  def sub(i, j, h)
+    m = @matr
+    m.each_with_index do |_element, k|
+      m[i][k] -= m[j][k] * h
     end
   end
-
-  end
-
 end
-N = Matr.new([[1, 2], [3, 5]])
-p N.triangle
-
-
